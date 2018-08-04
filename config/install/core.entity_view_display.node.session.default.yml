@@ -5,6 +5,7 @@ dependencies:
     - field.field.node.session.body
     - field.field.node.session.field_room
     - field.field.node.session.field_schedule
+    - field.field.node.session.field_speakers
     - node.type.session
   module:
     - datetime_range
@@ -39,6 +40,14 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     type: daterange_default
+    region: content
+  field_speakers:
+    weight: 104
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
     region: content
   links:
     weight: 100
