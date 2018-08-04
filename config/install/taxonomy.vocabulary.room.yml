@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Room
+vid: room
+description: 'List of available room inside the venue'
+hierarchy: 0
+weight: 0

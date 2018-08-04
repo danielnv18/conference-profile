@@ -7,26 +7,28 @@ distribution:
   name: Conference
 
 dependencies:
-  - node
   - block
   - block_content
   - ckeditor
-  - contextual
   - color
   - config
-  - editor
+  - contextual
+  - datetime
+  - datetime_range
   - dblog
-  - image
-  - menu_ui
-  - menu_link_content
-  - options
-  - path
-  - toolbar
+  - editor
   - field_ui
   - file
+  - image
+  - menu_link_content
+  - menu_ui
+  - node
+  - options
+  - path
+  - taxonomy
+  - toolbar
   - views
   - views_ui
-  - taxonomy
 
 themes:
   - bartik

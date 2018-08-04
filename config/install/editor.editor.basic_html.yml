@@ -35,10 +35,6 @@ settings:
           name: 'Block Formatting'
           items:
             - Format
-        -
-          name: Tools
-          items:
-            - Source
   plugins:
     stylescombo:
       styles: ''
