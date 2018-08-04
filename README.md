@@ -1,1 +1,1 @@
-# event-profile
+# Conference Profile

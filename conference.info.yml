@@ -1,0 +1,33 @@
+name: Conference
+type: profile
+description: 'Profile for conferences.'
+core: 8.x
+
+distribution:
+  name: Conference
+
+dependencies:
+  - node
+  - block
+  - block_content
+  - ckeditor
+  - contextual
+  - color
+  - config
+  - editor
+  - dblog
+  - image
+  - menu_ui
+  - menu_link_content
+  - options
+  - path
+  - toolbar
+  - field_ui
+  - file
+  - views
+  - views_ui
+  - taxonomy
+
+themes:
+  - bartik
+  - seven
