@@ -1,0 +1,20 @@
+conference_schedule.config_form:
+  path: '/admin/config/conference/schedule'
+  defaults:
+    _form: '\Drupal\conference_schedule\Form\ConfigForm'
+    _title: 'Schedule Configuration'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+
+conference_schedule.schedule_controller_dashboard:
+  path: '/admin/config/conference/schedule/dashboard'
+  defaults:
+    _controller: '\Drupal\conference_schedule\Controller\ScheduleController::dashboard'
+    _title: 'Scheduler'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
