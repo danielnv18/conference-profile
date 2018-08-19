@@ -4,3 +4,10 @@ conference_schedule.config_form:
   description: 'A description for the menu entry'
   parent: system.admin_config_system
   weight: 99
+
+conference_schedule.schedule:
+  title: 'Schedule Conference'
+  route_name: conference_schedule.schedule_controller_dashboard
+  description: 'A description for the menu entry'
+  parent: system.admin_config_system
+  weight: 99

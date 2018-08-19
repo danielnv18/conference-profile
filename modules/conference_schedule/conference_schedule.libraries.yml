@@ -1,0 +1,6 @@
+scheduler:
+  version: 1.x
+  js:
+    assets/dist/main.js: {}
+  dependencies:
+    - core/drupalSettings
