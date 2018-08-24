@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_track
+    - field.storage.node.field_time_slot
     - node.type.session
-    - taxonomy.vocabulary.track
-id: node.session.field_track
-field_name: field_track
+    - taxonomy.vocabulary.time_slot
+id: node.session.field_time_slot
+field_name: field_time_slot
 entity_type: node
 bundle: session
-label: Track
+label: 'Time Slot'
 description: ''
 required: false
 translatable: false
@@ -19,7 +19,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      track: track
+      time_slot: time_slot
     sort:
       field: name
       direction: asc

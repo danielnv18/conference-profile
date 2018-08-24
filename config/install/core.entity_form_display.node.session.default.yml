@@ -5,12 +5,11 @@ dependencies:
     - field.field.node.session.body
     - field.field.node.session.field_approved
     - field.field.node.session.field_room
-    - field.field.node.session.field_schedule
     - field.field.node.session.field_speakers
+    - field.field.node.session.field_time_slot
     - field.field.node.session.field_track
     - node.type.session
   module:
-    - datetime_range
     - path
     - text
 id: node.session.default
@@ -49,14 +48,17 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_schedule:
-    weight: 11
-    settings: {  }
-    third_party_settings: {  }
-    type: daterange_default
-    region: content
   field_speakers:
     weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_time_slot:
+    weight: 26
     settings:
       match_operator: CONTAINS
       size: 60

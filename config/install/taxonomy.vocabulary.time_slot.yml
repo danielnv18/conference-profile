@@ -1,8 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
-name: Track
-vid: track
-description: 'List of tracks'
+name: 'Time slot'
+vid: time_slot
+description: ''
 hierarchy: 0
 weight: 0

@@ -2,15 +2,15 @@ langcode: en
 status: true
 dependencies:
   module:
-    - datetime_range
     - node
-id: node.field_schedule
-field_name: field_schedule
+    - taxonomy
+id: node.field_time_slot
+field_name: field_time_slot
 entity_type: node
-type: daterange
+type: entity_reference
 settings:
-  datetime_type: datetime
-module: datetime_range
+  target_type: taxonomy_term
+module: core
 locked: false
 cardinality: 1
 translatable: true
