@@ -1,0 +1,35 @@
+{
+  "name": "conference_schedule",
+  "version": "1.0.0",
+  "description": "description",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --mode development",
+    "start:dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production",
+    "prettier": "prettier --write \"./src/**/*.js\""
+  },
+  "license": "MIT",
+  "dependencies": {
+    "apollo-boost": "^0.1.13",
+    "datetime-difference": "^1.0.0",
+    "graphql": "^0.13.2",
+    "react": "^16.4.2",
+    "react-apollo": "^2.1.11",
+    "react-beautiful-dnd": "^9.0.1",
+    "react-dom": "^16.4.2",
+    "styled-components": "^3.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-styled-components": "^1.5.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "prettier": "1.14.2",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
