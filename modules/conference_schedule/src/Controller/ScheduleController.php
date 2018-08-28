@@ -16,10 +16,17 @@ class ScheduleController extends ControllerBase {
    *   Return Hello string.
    */
   public function dashboard() {
+    $config = $this->config('conference_schedule.config');
     return [
       '#type' => 'markup',
       '#attached' => [
-        'library' => ['conference_schedule/scheduler']
+        'library' => ['conference_schedule/scheduler'],
+        'drupalSettings' => [
+          'conference' => [
+            'startDate' => $config->get('start'),
+            'endDate' => $config->get('end')
+          ]
+        ]
       ],
       '#markup' => '<div id="conference-schedule-dashboard"></div>',
     ];
