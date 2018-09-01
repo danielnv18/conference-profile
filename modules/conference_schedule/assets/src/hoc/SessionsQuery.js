@@ -2,7 +2,7 @@ import React from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
-const UN_SCHEDULE = gql`
+const SCHEDULE = gql`
   query scheduleSessions(
     $nodeFilter: EntityQueryFilterInput
     $termFilter: EntityQueryFilterInput
@@ -50,7 +50,7 @@ export default function querySchedule(WrappedComponent) {
   return class SessionsQuery extends React.Component {
     render() {
       return (
-        <Query query={UN_SCHEDULE} variables={variables}>
+        <Query query={SCHEDULE} variables={variables}>
           {({ loading, error, data }) => {
             if (loading) return "Loading...";
             if (error) return `Error! ${error.message}`;

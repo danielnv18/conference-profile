@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { DragDropContext } from "react-beautiful-dnd";
 import styled from "styled-components";
 import Column from "../componets/Column";
 import querySchedule from "./../hoc/SessionsQuery";
@@ -6,7 +7,7 @@ import find from "lodash.find";
 
 const Grid = styled.section`
   display: grid;
-  grid-template-columns: repeat(${props => props.columns}, 200px);
+  grid-template-columns: repeat(${props => props.columns}, 250px);
   grid-gap: 15px;
 `;
 
@@ -37,6 +38,7 @@ class Board extends Component {
 
     this.assignSessions = this.assignSessions.bind(this);
     this.assignTimeSlots = this.assignTimeSlots.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
   }
 
   componentDidMount() {
@@ -66,18 +68,28 @@ class Board extends Component {
 
   assignTimeSlots() {}
 
+  onDragEnd(result) {
+    // TODO: reorder column.
+  }
+
   render() {
     const { sessions } = this.props;
     return (
       <Grid columns={this.state.columns.length}>
-        {this.state.columns.map(column => {
-          const columnSessions = column.sessionsIds.map(uuid =>
-            find(sessions, ["uuid", uuid])
-          );
-          return (
-            <Column key={column.id} column={column} sessions={columnSessions} />
-          );
-        })}
+        <DragDropContext onDragEnd={this.onDragEnd}>
+          {this.state.columns.map(column => {
+            const columnSessions = column.sessionsIds.map(uuid =>
+              find(sessions, ["uuid", uuid])
+            );
+            return (
+              <Column
+                key={column.id}
+                column={column}
+                sessions={columnSessions}
+              />
+            );
+          })}
+        </DragDropContext>
       </Grid>
     );
   }

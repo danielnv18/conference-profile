@@ -1,4 +1,5 @@
 import React from "react";
+import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -7,8 +8,22 @@ const Container = styled.div`
   margin-bottom: 8px;
 `;
 
-const Session = ({ session }) => {
-  return <Container>{session.title}</Container>;
+const Session = ({ session, index }) => {
+  return (
+    <Draggable draggableId={session.uuid} index={index}>
+      {provided => {
+        return (
+          <Container
+            innerRef={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+            {session.title}
+          </Container>
+        );
+      }}
+    </Draggable>
+  );
 };
 
 export default Session;
