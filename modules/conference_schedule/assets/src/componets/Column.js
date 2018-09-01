@@ -21,6 +21,7 @@ const Title = styled.h3`
 
 const SessionList = styled.div`
   padding: 10px 12px;
+  min-height: 100px;
 `;
 
 class Column extends Component {

@@ -3,7 +3,7 @@ import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 
 const Container = styled.div`
-  background-color: white;
+  background-color: ${props => (props.isDragging ? "lightgreen" : "white")};
   border: 1px solid lightgrey;
   padding: 8px;
   margin-bottom: 8px;
@@ -12,12 +12,13 @@ const Container = styled.div`
 const Session = ({ session, index }) => {
   return (
     <Draggable draggableId={session.uuid} index={index}>
-      {provided => {
+      {(provided, snapshot) => {
         return (
           <Container
             innerRef={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
+            isDragging={snapshot.isDragging}
           >
             {session.title}
           </Container>

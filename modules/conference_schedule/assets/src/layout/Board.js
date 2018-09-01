@@ -86,18 +86,47 @@ class Board extends Component {
       return;
     }
 
-    const column = find(columns, ["id", source.droppableId]);
-    const index = findindex(columns, ["id", source.droppableId]);
-    const newSessionIds = Array.from(column.sessionsIds);
-    newSessionIds.splice(source.index, 1);
-    newSessionIds.splice(destination.index, 0, draggableId);
+    const start = find(columns, ["id", source.droppableId]);
+    const finnish = find(columns, ["id", destination.droppableId]);
 
-    const newColumn = {
-      ...column,
-      sessionsIds: newSessionIds
+    // Moving within the same column.
+    if (start === finnish) {
+      const index = findindex(columns, ["id", source.droppableId]);
+      const newSessionIds = Array.from(start.sessionsIds);
+      newSessionIds.splice(source.index, 1);
+      newSessionIds.splice(destination.index, 0, draggableId);
+
+      const newColumn = {
+        ...start,
+        sessionsIds: newSessionIds
+      };
+
+      const newColumns = columns.splice(index, 1, newColumn);
+      this.setState({ column: newColumns });
+      return;
+    }
+
+    // Moving in a different column.
+    const startSessionIds = Array.from(start.sessionsIds);
+    startSessionIds.splice(source.index, 1);
+    const newStart = {
+      ...start,
+      sessionsIds: startSessionIds
     };
 
-    const newColumns = columns.splice(index, 1, newColumn);
+    const finishSessionIds = Array.from(finnish.sessionsIds);
+    finishSessionIds.splice(destination.index, 0, draggableId);
+    const newFinnish = {
+      ...finnish,
+      sessionsIds: finishSessionIds
+    };
+
+    const indexStart = findindex(columns, ["id", source.droppableId]);
+    const indexFinish = findindex(columns, ["id", destination.droppableId]);
+
+    let newColumns = null;
+    newColumns = columns.splice(indexStart, 1, newStart);
+    newColumns = columns.splice(indexFinish, 1, newFinnish);
     this.setState({ column: newColumns });
   }
 
