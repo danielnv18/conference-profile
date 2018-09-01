@@ -5,7 +5,7 @@ import Session from "./Session";
 
 const Container = styled.div`
   border: 1px solid #bfbfba;
-  padding: 10px 12px;
+  padding-bottom: 12px;
 `;
 
 const Title = styled.h3`

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Column from "../componets/Column";
 import querySchedule from "./../hoc/SessionsQuery";
 import find from "lodash.find";
+import findindex from "lodash.findindex";
 
 const Grid = styled.section`
   display: grid;
@@ -69,7 +70,35 @@ class Board extends Component {
   assignTimeSlots() {}
 
   onDragEnd(result) {
-    // TODO: reorder column.
+    const { destination, source, draggableId } = result;
+    const { columns } = this.state;
+
+    // If there is no destination.
+    if (!destination) {
+      return;
+    }
+
+    // If the destination is the same as the source.
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    const column = find(columns, ["id", source.droppableId]);
+    const index = findindex(columns, ["id", source.droppableId]);
+    const newSessionIds = Array.from(column.sessionsIds);
+    newSessionIds.splice(source.index, 1);
+    newSessionIds.splice(destination.index, 0, draggableId);
+
+    const newColumn = {
+      ...column,
+      sessionsIds: newSessionIds
+    };
+
+    const newColumns = columns.splice(index, 1, newColumn);
+    this.setState({ column: newColumns });
   }
 
   render() {
