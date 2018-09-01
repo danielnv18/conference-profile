@@ -31,6 +31,10 @@ dependencies:
   - views
   - views_ui
 
+  # Contrib
+  - graphql
+  - graphql_core
+
   # Custom
   - conference_schedule
 

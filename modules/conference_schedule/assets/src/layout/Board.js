@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Column from "../componets/Column";
 import querySchedule from "./../hoc/SessionsQuery";
+import find from "lodash.find";
 
 const Grid = styled.section`
   display: grid;
@@ -9,29 +10,72 @@ const Grid = styled.section`
   grid-gap: 15px;
 `;
 
-const Title = styled.h3`
-  font-size: 0.8rem;
-  margin: 0;
-  padding: 10px 12px;
-  text-align: center;
-  background: #f5f5f2;
-  border: 1px solid #bfbfba;
-  color: #333;
-  text-transform: uppercase;
-`;
-
 class Board extends Component {
+  constructor(props) {
+    super(props);
+
+    let columns = [
+      {
+        id: "un-schedule",
+        title: "Un-schedule",
+        date: null,
+        sessionsIds: [],
+        timeSlotIds: []
+      }
+    ];
+    this.props.dates.forEach(date => {
+      columns.push({
+        id: date.toISOString(),
+        title: date.toDateString(),
+        date: date,
+        sessionsIds: [],
+        timeSlotIds: []
+      });
+    });
+
+    this.state = { columns };
+
+    this.assignSessions = this.assignSessions.bind(this);
+    this.assignTimeSlots = this.assignTimeSlots.bind(this);
+  }
+
+  componentDidMount() {
+    let { columns } = this.state;
+
+    columns.forEach(this.assignSessions);
+
+    this.setState({ columns });
+  }
+
+  assignSessions(column, index, columns) {
+    const { sessions } = this.props;
+    let sessionsIds;
+    if (column.id === "un-schedule") {
+      sessionsIds = sessions.map(session => {
+        if (session.fieldTimeSlot === null) {
+          return session.uuid;
+        }
+      });
+    } else {
+    }
+
+    if (typeof sessionsIds !== "undefined") {
+      columns[index] = { ...column, sessionsIds };
+    }
+  }
+
+  assignTimeSlots() {}
+
   render() {
     return (
-      <Grid columns={this.props.dates.length + 1}>
-        <Column>
-          <Title>Un-schedule</Title>
-        </Column>
-        {this.props.dates.map((date, index) => {
+      <Grid columns={this.state.columns.length}>
+        {this.state.columns.map(column => {
+          const { sessions } = this.props;
+          const columnSessions = column.sessionsIds.map(uuid =>
+            find(sessions, ["uuid", uuid])
+          );
           return (
-            <Column key={index}>
-              <Title>{date.toDateString()}</Title>
-            </Column>
+            <Column key={column.id} column={column} sessions={columnSessions} />
           );
         })}
       </Grid>
