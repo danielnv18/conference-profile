@@ -67,10 +67,10 @@ class Board extends Component {
   assignTimeSlots() {}
 
   render() {
+    const { sessions } = this.props;
     return (
       <Grid columns={this.state.columns.length}>
         {this.state.columns.map(column => {
-          const { sessions } = this.props;
           const columnSessions = column.sessionsIds.map(uuid =>
             find(sessions, ["uuid", uuid])
           );
