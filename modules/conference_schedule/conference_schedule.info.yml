@@ -2,3 +2,7 @@ name: Conference Schedule
 description: 'Provides Session content type and related configuration. '
 type: module
 core: 8.x
+
+dependencies:
+  - graphql
+  - graphql_core
