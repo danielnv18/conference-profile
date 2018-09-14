@@ -12,11 +12,14 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *   id = "time_slot_input",
  *   name = "TimeSlutInput",
  *   fields = {
- *     "title" = "String",
- *     "body" = {
+ *     "date_start" = {
  *        "type" = "String",
- *        "nullable" = "TRUE"
- *     }
+ *        "nullable" = "FALSE"
+ *     },
+ *     "date_end" = {
+ *        "type" = "String",
+ *        "nullable" = "FALSE"
+ *     },
  *   }
  * )
  */
