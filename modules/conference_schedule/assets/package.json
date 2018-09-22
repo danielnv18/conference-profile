@@ -12,9 +12,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "apollo-boost": "^0.1.13",
+    "apollo-boost": "^0.1.16",
     "datetime-difference": "^1.0.0",
-    "graphql": "^0.13.2",
+    "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
     "lodash.find": "^4.6.0",
     "lodash.findindex": "^4.6.0",
@@ -22,7 +22,7 @@
     "react-apollo": "^2.1.11",
     "react-beautiful-dnd": "^9.0.1",
     "react-dom": "^16.4.2",
-    "styled-components": "^3.4.2"
+    "styled-components": "^3.4.9"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

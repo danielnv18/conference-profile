@@ -3,7 +3,10 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 const SCHEDULE = gql`
-  query scheduleSessions($nodeFilter: EntityQueryFilterInput, $termFilter: EntityQueryFilterInput) {
+  query scheduleSessions(
+    $nodeFilter: EntityQueryFilterInput!
+    $termFilter: EntityQueryFilterInput!
+  ) {
     nodeQuery(filter: $nodeFilter) {
       entities {
         ... on NodeSession {
@@ -51,7 +54,6 @@ export default function querySchedule(WrappedComponent) {
           {({ loading, error, data }) => {
             if (loading) return 'Loading...';
             if (error) return `Error! ${error.message}`;
-
             return (
               <WrappedComponent
                 sessions={data.nodeQuery.entities}
