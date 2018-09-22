@@ -3,6 +3,7 @@ description: 'Provides Session content type and related configuration. '
 type: module
 core: 8.x
 dependencies:
+  - datetime_range
   - field
   - menu_ui
   - node
