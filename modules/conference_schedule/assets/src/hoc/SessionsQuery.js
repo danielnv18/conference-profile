@@ -1,12 +1,9 @@
-import React from "react";
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
+import React from 'react';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
 const SCHEDULE = gql`
-  query scheduleSessions(
-    $nodeFilter: EntityQueryFilterInput
-    $termFilter: EntityQueryFilterInput
-  ) {
+  query scheduleSessions($nodeFilter: EntityQueryFilterInput, $termFilter: EntityQueryFilterInput) {
     nodeQuery(filter: $nodeFilter) {
       entities {
         ... on NodeSession {
@@ -39,10 +36,10 @@ const SCHEDULE = gql`
 
 const variables = {
   nodeFilter: {
-    conditions: [{ operator: "EQUAL", field: "type", value: ["session"] }]
+    conditions: [{ operator: 'EQUAL', field: 'type', value: ['session'] }]
   },
   termFilter: {
-    conditions: [{ operator: "EQUAL", field: "vid", value: ["time_slot"] }]
+    conditions: [{ operator: 'EQUAL', field: 'vid', value: ['time_slot'] }]
   }
 };
 
@@ -52,7 +49,7 @@ export default function querySchedule(WrappedComponent) {
       return (
         <Query query={SCHEDULE} variables={variables}>
           {({ loading, error, data }) => {
-            if (loading) return "Loading...";
+            if (loading) return 'Loading...';
             if (error) return `Error! ${error.message}`;
 
             return (
