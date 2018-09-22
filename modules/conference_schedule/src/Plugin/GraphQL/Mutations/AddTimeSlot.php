@@ -8,7 +8,7 @@ use Drupal\graphql_core\Plugin\GraphQL\Mutations\Entity\CreateEntityBase;
 use GraphQL\Type\Definition\ResolveInfo;
 
 /**
- * Class CreateArticle
+ * Class CreateTimeSlot
  *
  * @package Drupal\conference_schedule\Plugin\GraphQL\Mutations
  *
@@ -23,12 +23,23 @@ use GraphQL\Type\Definition\ResolveInfo;
  */
 class AddTimeSlot extends CreateEntityBase {
 
-  protected function extractEntityInput(
-    $value,
-    array $args,
-    ResolveContext $context,
-    ResolveInfo $info
-  ) {
-    $x = 1;
+  protected function extractEntityInput($value, array $args, ResolveContext $context, ResolveInfo $info) {
+    $timezone = new \DateTimeZone(drupal_get_user_timezone());
+    $start_date = new \DateTime($args['input']['startDate'], $timezone);
+    $end_date = new \DateTime($args['input']['endDate'], $timezone);
+    $name = $start_date->format('d F') . '-' .$start_date->format('H:i:s') . '/'.$end_date->format('H:i:s');
+
+    // Drupal expect the time in UTC timezone.
+    $utc = new \DateTimeZone('UTC');
+    $start_date->setTimezone($utc);
+    $end_date->setTimezone($utc);
+
+    return [
+      'name' => $name,
+      'field_date_range' => [
+        'value' => $start_date->format('Y-m-d\TH:i:s'),
+        'end_value' => $end_date->format('Y-m-d\TH:i:s'),
+      ]
+    ];
   }
 }

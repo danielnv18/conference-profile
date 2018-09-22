@@ -10,13 +10,13 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *
  * @GraphQLInputType(
  *   id = "time_slot_input",
- *   name = "TimeSlutInput",
+ *   name = "TimeSlotInput",
  *   fields = {
- *     "date_start" = {
+ *     "startDate" = {
  *        "type" = "String",
  *        "nullable" = "FALSE"
  *     },
- *     "date_end" = {
+ *     "endDate" = {
  *        "type" = "String",
  *        "nullable" = "FALSE"
  *     },
