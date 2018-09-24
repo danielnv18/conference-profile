@@ -18,7 +18,7 @@ use GraphQL\Type\Definition\ResolveInfo;
  *   entity_bundle="time_slot",
  *   name="addTimeSlot",
  *   type="EntityCrudOutput!",
- *   arguments={"input"="TimeSlutInput"}
+ *   arguments={"input"="TimeSlotInput"}
  * )
  */
 class AddTimeSlot extends CreateEntityBase {
